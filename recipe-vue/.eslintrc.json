@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "plugin:vue/essential",
+    "@vue/airbnb"
+  ],
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "max-len": ["error", { "code": 2000 }],
+    "no-restricted-syntax": "off",
+    "no-param-reassign": "off",
+    "no-return-assign": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "no-continue": "off",
+    "import-no-unresolved": "off",
+    "quotes": "off"
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  }
+}

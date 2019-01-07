@@ -1,6 +1,6 @@
 <template>
   <v-container fill-height fluid grid-list-xl>
-    <v-flex md12 lg6>
+    <v-flex md12 lg12>
       <material-card color="orange" title="All Recipes" text>
         <v-data-table :headers="headers" :items="items" hide-actions>
           <template slot="headerCell" slot-scope="{ header }">

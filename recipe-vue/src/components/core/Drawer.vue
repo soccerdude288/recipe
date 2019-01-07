@@ -97,6 +97,11 @@ export default {
         text: 'Recipes',
       },
       {
+        to: '/setup',
+        icon: 'mdi-settings-outline',
+        text: 'Setup',
+      },
+      {
         to: '/user-profile',
         icon: 'mdi-account',
         text: 'User Profile',

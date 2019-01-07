@@ -15,6 +15,11 @@ export default [
     view: 'Recipes',
   },
   {
+    path: '/setup',
+    // Relative to /src/views
+    view: 'Setup',
+  },
+  {
     path: '/user-profile',
     name: 'User Profile',
     view: 'UserProfile',

@@ -74,6 +74,37 @@
       >
         <material-card
           color="orange"
+          title="Today's Meals"
+        >
+          <v-data-table
+            :headers="todayMealsHeaders"
+            :items="todayMealsItems"
+            hide-actions
+          >
+            <template
+              slot="headerCell"
+              slot-scope="{ header }"
+            >
+              <span
+                class="font-weight-light text-warning text--darken-3"
+                v-text="header.text"
+              />
+            </template>
+            <template
+              slot="items"
+              slot-scope="{ index, item }"
+            >
+              <td>{{ item.name }}</td>
+            </template>
+          </v-data-table>
+        </material-card>
+      </v-flex>
+      <v-flex
+        md12
+        lg6
+      >
+        <material-card
+          color="orange"
           title="Employee Stats"
           text="New employees on 15th September, 2016"
         >
@@ -352,6 +383,19 @@ export default {
           }],
         ],
       },
+      todayMealsHeaders: [
+        {
+          sortable: false,
+          text: "Meal",
+          value: "meal",
+        },
+      ],
+      todayMealsItems: [
+        {
+          name: "Spagetti",
+          id: 1234,
+        },
+      ],
       headers: [
         {
           sortable: false,

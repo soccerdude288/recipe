@@ -16,7 +16,10 @@
     "import/extensions": "off",
     "no-continue": "off",
     "import-no-unresolved": "off",
-    "quotes": "off"
+    "quotes": "off",
+    "prefer-destructuring": "off",
+    "no-unused-vars": "off",
+    "no-debugger": "off"
   },
   "parserOptions": {
     "parser": "babel-eslint"

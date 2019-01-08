@@ -20,6 +20,11 @@ export default [
     view: 'Setup',
   },
   {
+    path: '/setup/ingredients/:id',
+    // Relative to /src/views
+    view: 'Ingredient',
+  },
+  {
     path: '/user-profile',
     name: 'User Profile',
     view: 'UserProfile',

@@ -13,6 +13,21 @@
           color="orange"
           title="Ingredients"
         >
+        <v-toolbar>
+            <v-fab-transition>
+              <v-btn
+                color="green"
+                fab
+                dark
+                small
+                absolute
+                right
+                to="/setup/ingredients/new"
+              >
+                <v-icon>add</v-icon>
+              </v-btn>
+            </v-fab-transition>
+          </v-toolbar>
           <v-data-table
             :headers="ingredientHeaders"
             :items="ingredientItems"
@@ -79,19 +94,19 @@ export default {
       ingredientItems: [
         {
           name: "Milk",
-          id: "123",
+          id: "1234",
         },
         {
           name: "Butter",
-          id: "123",
+          id: "1235",
         },
         {
           name: "Eggs",
-          id: "123",
+          id: "1236",
         },
         {
           name: "Sugar",
-          id: "123",
+          id: "1237",
         },
       ],
       ingredientHeaders: [
@@ -104,15 +119,15 @@ export default {
       measurementItems: [
         {
           name: "Cups",
-          id: 1234,
+          id: 12346,
         },
         {
           name: "Tablespoons",
-          id: 1234,
+          id: 12345,
         },
         {
           name: "Teaspoons",
-          id: 1234,
+          id: 12344,
         },
       ],
       measurementHeaders: [

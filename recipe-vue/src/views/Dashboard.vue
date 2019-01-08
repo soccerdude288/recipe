@@ -74,6 +74,39 @@
       >
         <material-card
           color="orange"
+          title="Test Data"
+        >
+          <v-data-table
+            :headers="testItemsHeader"
+            :items="testItems"
+            hide-actions
+          >
+            <template
+              slot="headerCell"
+              slot-scope="{ header }"
+            >
+              <span
+                class="font-weight-light text-warning text--darken-3"
+                v-text="header.text"
+              />
+            </template>
+            <template
+              slot="items"
+              slot-scope="{ index, item }"
+            >
+              <td>{{ item.name }}</td>
+              <td>{{ item.descript }}</td>
+              <td>{{ item.price }}</td>
+            </template>
+          </v-data-table>
+        </material-card>
+      </v-flex>
+      <v-flex
+        md12
+        lg6
+      >
+        <material-card
+          color="orange"
           title="Today's Meals"
         >
           <v-data-table
@@ -216,7 +249,7 @@
                   </div>
                 </v-list-tile>
                 <v-divider/>
-                <v-list-tile @click="complete(1)">
+                <v-list-tile @click="testMethod()">
                   <v-list-tile-action>
                     <v-checkbox
                       :value="list[1]"
@@ -306,6 +339,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -455,6 +490,24 @@ export default {
           salary: '$63,542',
         },
       ],
+      testItemsHeader: [
+        {
+          sortable: false,
+          text: "Name",
+          value: "name",
+        },
+        {
+          sortable: false,
+          text: "Description",
+          value: "descript",
+        },
+        {
+          sortable: false,
+          text: "Price",
+          value: "price",
+        },
+      ],
+      testItems: [],
       tabs: 0,
       list: {
         0: false,
@@ -467,6 +520,18 @@ export default {
     complete(index) {
       this.list[index] = !this.list[index];
     },
+  },
+  mounted() {
+    console.log("start mounted");
+    axios
+      .get(`http://localhost:3128/test/`, {
+        headers: {
+          // "x-access-token": token,
+        },
+      })
+      .then((data) => {
+        this.testItems = data.data;
+      });
   },
 };
 </script>

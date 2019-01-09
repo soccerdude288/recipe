@@ -522,7 +522,6 @@ export default {
     },
   },
   mounted() {
-    console.log("start mounted");
     axios
       .get(`http://localhost:3128/test/`, {
         headers: {

@@ -13,25 +13,16 @@
           color="orange"
           title="Ingredients"
         >
-        <v-toolbar>
-            <v-fab-transition>
-              <v-btn
-                color="green"
-                fab
-                dark
-                small
-                absolute
-                right
-                to="/setup/ingredients/new"
-              >
-                <v-icon>add</v-icon>
-              </v-btn>
-            </v-fab-transition>
-          </v-toolbar>
+<v-text-field
+        v-model="search"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
           <v-data-table
             :headers="ingredientHeaders"
             :items="ingredientItems"
-            hide-actions
+            :search="search"
           >
             <template
               slot="headerCell"
@@ -46,9 +37,22 @@
               slot="items"
               slot-scope="{ index, item }"
             >
-              <td>{{ item.name }}</td>
+              <td v-on:click="linkTo(item.ingredient_id)">{{ item.name }}</td>
             </template>
           </v-data-table>
+          <v-card-text style="position: relative">
+            <v-btn
+              absolute
+              dark
+              fab
+              top
+              right
+              color="pink"
+              to="/setup/ingredients/new"
+            >
+              <v-icon medium>mdi-plus-circle</v-icon>
+            </v-btn>
+          </v-card-text>
         </material-card>
       </v-flex>
       <v-flex
@@ -88,26 +92,14 @@
 </template>
 
 <script>
+import axios from "axios";
+import router from '@/router';
+
 export default {
   data() {
     return {
+      search: '',
       ingredientItems: [
-        {
-          name: "Milk",
-          id: "1234",
-        },
-        {
-          name: "Butter",
-          id: "1235",
-        },
-        {
-          name: "Eggs",
-          id: "1236",
-        },
-        {
-          name: "Sugar",
-          id: "1237",
-        },
       ],
       ingredientHeaders: [
         {
@@ -138,6 +130,22 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    linkTo(link) {
+      router.push(`/setup/ingredients/${link}`);
+    },
+  },
+  mounted() {
+    axios
+      .get(`http://localhost:3128/get/ingredients`, {
+        headers: {
+          // "x-access-token": token,
+        },
+      })
+      .then((data) => {
+        this.ingredientItems = data.data;
+      });
   },
 };
 </script>
